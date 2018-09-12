@@ -12,13 +12,13 @@ app.disable('x-powered-by')
 
 app.use(bodyParser.json())
 
-app.get('/:id', (req,res,next) => {
+app.get('/', (req,res) => {
+    queries.listAll().then(cohort => res.json({cohort}))
+})
+
+app.get('/:id', (req,res) => {
     const pickOne = req.params.id
-    if(pickOne){
     queries.list(pickOne).then(students => res.json({students}))
-    } else {
-        queries.listAll().then(cohort => res.json({cohort}))
-    }
 })
 
 app.use((err,req,res,next)=>{
