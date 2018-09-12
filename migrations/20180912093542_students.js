@@ -7,10 +7,10 @@ exports.up = function(knex, Promise) {
         student.string('hometown')
         student.string('prevOccupation')
         student.integer('favoriteNum')
-        student.string('pasttime')
+        student.string('pastime')
     })
 };
 
 exports.down = function(knex, Promise) {
-
+    return knex.schema.dropTableIfExists('cohort')
 };
