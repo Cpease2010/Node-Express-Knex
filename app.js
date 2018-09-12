@@ -4,13 +4,17 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const port = process.env.PORT || 3000
 const listener = () => console.log(`Listening to port ${port}!`)
+const queries = require('./queries')
 
 app.use(morgan('dev'))
+
 app.disable('x-powered-by')
+
 app.use(bodyParser.json())
 
-app.get('/ping', (req,res) => {
-    res.send('PONG!')
+app.get('/:id', (req,res,next) => {
+    const pickOne = req.params.id
+    queries.listAll(pickOne).then(students => res.json({students}))
 })
 
 app.use((err,req,res,next)=>{
