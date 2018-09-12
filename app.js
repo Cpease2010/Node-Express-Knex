@@ -14,7 +14,11 @@ app.use(bodyParser.json())
 
 app.get('/:id', (req,res,next) => {
     const pickOne = req.params.id
-    queries.listAll(pickOne).then(students => res.json({students}))
+    if(pickOne){
+    queries.list(pickOne).then(students => res.json({students}))
+    } else {
+        queries.listAll().then(cohort => res.json({cohort}))
+    }
 })
 
 app.use((err,req,res,next)=>{
