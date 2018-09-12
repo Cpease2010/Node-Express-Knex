@@ -1,0 +1,11 @@
+{
+  "name": "g95database",
+  "version": "1.0.0",
+  "description": "Building database and server: Express Node PostgreSQL",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cory Pease",
+  "license": "ISC"
+}
